@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+    <style>
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #f5f5f5;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+      }
+
+      .login-container {
+        width: 400px;
+        background-color: #fff;
+        border-radius: 10px;
+        padding: 40px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      h1 {
+        margin-bottom: 30px;
+        text-align: center;
+        color: #333;
+        font-weight: bold;
+      }
+
+      form {
+        display: flex;
+        flex-direction: column;
+      }
+
+      label {
+        margin-bottom: 10px;
+        color: #555;
+        font-weight: bold;
+      }
+
+      input[type="email"],
+      input[type="password"] {
+        padding: 12px;
+        margin-bottom: 20px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        transition: border-color 0.3s ease;
+      }
+
+      input[type="email"]:focus,
+      input[type="password"]:focus {
+        border-color: #007bff;
+      }
+
+      input[type="submit"] {
+        padding: 12px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+
+      input[type="submit"]:hover {
+        background-color: #0056b3;
+      }
+
+      .error-message {
+        color: red;
+        margin-top: 10px;
+        text-align: center;
+      }
+
+      .footer {
+        margin-top: 20px;
+        text-align: center;
+        color: #777;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="login-container">
+      <h1>Login</h1>
+
+      <% if(typeof message !== 'undefined') { %>
+      <p class="error-message"><%= message %></p>
+      <% } %>
+
+      <form action="" method="POST">
+        <label for="email">Email:</label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          placeholder="Enter email"
+          required
+        />
+
+        <label for="password">Password:</label>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          placeholder="Enter password"
+          required
+        />
+
+        <input type="submit" value="Login" />
+      </form>
+
+      <p class="footer">
+        Don't have an account? <a href="/register">Register</a>
+      </p>
+    </div>
+  </body>
+</html>
