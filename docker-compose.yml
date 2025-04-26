@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  chat-app:
+    build: .
+    container_name: chat-app
+    ports:
+      - "5000:5000"
+    env_file:
+      - .env
+    depends_on:
+      - mongo_db
+    restart: unless-stopped
+
+  mongo_db:
+    image: mongo:latest
+    container_name: mongo-database
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_db:/data/db
+    restart: unless-stopped
+
+volumes:
+  mongo_db:
