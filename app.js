@@ -6,9 +6,20 @@ const Chat = require("./models/chatModel");
 
 const app = express();
 require("dotenv").config();
+// mongoose
+//   .connect("mongodb://127.0.0.1:27017/Chat-app")
+//   .then(() => console.log("Conneted to DB!"));
+
+const mongoURI = process.env.MONGO_URI || "mongodb://127.0.0.1:27017/Chat-app";
+
 mongoose
-  .connect("mongodb://127.0.0.1:27017/Chat-app")
-  .then(() => console.log("Conneted to DB!"));
+  .connect(mongoURI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+  .then(() => console.log("Connected to DB!"))
+  .catch((err) => console.error("DB connection error:", err));
+
 
 app.use("/", userRoute);
 
