@@ -32,17 +32,17 @@ pipeline {
         stage('Check Docker Compose Availability') {
             steps {
                 // Check if Docker Compose is available
-                bat 'docker-compose --version'
+                bat 'docker compose --version'
             }
         }
 
         stage('Run Docker Compose') {
             steps {
                 // Bring down any existing containers
-                bat 'docker-compose down || exit 0'
+                bat 'docker compose down || exit 0'
 
                 // Start containers in detached mode
-                bat 'docker-compose up -d --build'
+                bat 'docker compose up -d --build'
             }
         }
     }
